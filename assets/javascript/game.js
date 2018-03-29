@@ -14,6 +14,8 @@ var guessesRemaining = 10;
     var computerChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 // store computer guess
 var computerGuess;
+// array to store current guess failure messages
+var badGuess = ["nice try", "that was close", "you nearly guessed it", "getting warmer", "not even close"]
 //=================================================================
 
 // functions
@@ -31,56 +33,71 @@ var computerGuess;
         computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length - 1)];
         }
 
-        //display computer guess
-        document.querySelector("#computerGuess").innerHTML = "Computer Guess: " + computerGuess;
+
+        //clear computer guess if applicable
+        document.querySelector("#computerGuess").innerHTML = "Computer Guess: ";
+
         //display player guess
         document.querySelector("#playerGuess").innerHTML = "Your Guess: " + playerGuess;
+        
+        //hide win message if applicable
+        document.getElementById("winMessage").style.display = "none";
+
+        //hide lose message if applicable
+        document.getElementById("loseMessage").style.display = "none";
 
         //compare player guess with computer guess and update the appropriate fields based upon results
         if (playerGuess === computerGuess)  {
+            //inform player they won the game
+            document.getElementById("winMessage").style.display = "block";
+            
             //update number of wins
             wins++;
 
-            // player wins game when they guess correctly 3 times
-            if (wins === 3)   {
-            document.querySelector("#message").innerHTML = "You Win!!!!!!!!";
+            //display number of wins
+            document.querySelector("#wins").innerHTML = "Wins: " + wins;
+
             //reset guesses remaining to default value
             guessesRemaining = 10;
+
             //reset guess history array to default value (empty)
             guessHistory.length = 0;
 
-            }   else    {
-            //reset guesses remaining to default value
-             guessesRemaining = 10;
-            //reset guess history array to default value (empty)
-            guessHistory.length = 0; 
-
-            }
 
         } else if (playerGuess !== computerGuess && guessesRemaining > 0)  {
-            document.querySelector("#message").innerHTML = "You Really Suck!!!!!!!!";
             //update number of guesses remaining
             guessesRemaining--;
-            var i = guessesRemaining;
-            console.log(i);
 
-            //for (i; i > 0; i--)  {
-            //document.querySelector("#guess[i]").innerHTML = "Guess: " + playerGuess;
-            //}
+            //display number of guesses remaining
+            document.querySelector("#remainingGuesses").innerHTML = "Remaining Guesses: " + guessesRemaining;
 
             //add current player guess to the guess history array
             guessHistory.push(playerGuess);
+
             //convert array to string
             guessHistory.toString();
 
             //display guess history
             document.querySelector("#guessHistory").innerHTML = "Guess History: " + guessHistory;
-            //document.getElementById("#guessHistory").innerHTML = guessHistory.toString();
 
         }   else    {  
-            document.querySelector("#message").innerHTML = "You Suck Loser!!!!!!!!";
+            //inform player they lost the game
+            document.getElementById("loseMessage").style.display = "block";
+
+            //display computer guess
+            document.querySelector("#computerGuess").innerHTML = "Computer Guess: " + computerGuess;
+
             //update number of losses
             losses++;
+
+            //display number of losses
+            document.querySelector("#losses").innerHTML = "Losses: " + losses;
+
+            //reset guesses remaining to default value
+            guessesRemaining = 10;
+
+            //reset guess history array to default value (empty)
+            guessHistory.length = 0;
         }
 
 

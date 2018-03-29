@@ -5,35 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The Psychic Game</title>
+    <!-- reset styling to default values to ensure cross browser compatibility-->
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/reset.css" />
+    <!-- external styling -->
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
     <script src="./assets/javascript/game.js"></script>
 </head>
 <body>
-    <div id="game">
-        <h1>Welcome to the Psychic Game</h1>
-        <br/>
-        <h1 id="message"></h1>
-        <br/>
-        <p>Can you guess which letter I'm thinking of?</p>
-        <p id="playerGuess">Your Guess:</p>
-        <p id="computerGuess">Computer Guess:</p>
-        <p id="wins"></p>
-        <p id="losses"></p>
-        <P id="guessHistory"></P>
-        <p id="remaining">Remaining Guesses: 10</p>
+    <div id="container">
+        <div id="game">
+            <h1 class="heading">Welcome to the Psychic Game</h1>
+            <br/>
+            <p class="subHeading">Can you guess which letter I'm thinking of?</p>
+            <br></br>
+            <p class="subHeading">If you guess the correct letter in less than 10 choices you win!</p>
+            <br></br>
+            <p class="subHeading">Select a letter to begin the game</p>
+            <br><br/>
+            <p id="computerGuess">Computer Guess:</p>
+            <br/><br/>
+            <p id="playerGuess">Your Guess:</p>
+            <br><br/>
+            <P id="guessHistory">Guess History:</P>
+            <br/><br/>
+            <p id="remainingGuesses">Remaining Guesses: 10</p>
+            <br/><br/>
+            <p id="wins">Wins:</p>
+            <br/><br/>
+            <p id="losses">Losses:</p>
+            <br/><br/>
+            <h1 id="winMessage">Congratulations!!!! You Win!!!!!</h1>
+            <h1 id="loseMessage">Sorry, but you lost!!!!!!!!!</h1>
+        </div>
     </div>
-
-    <!--<p id="demo">a paragraph</p>
-    <button type="button" onclick="msg()">try it</button>-->
-
-
-    <!--<script type="text/javascript">
-        // Whenever a key is pressed, alert "pressed a button".
-        document.onkeyup = function() {
-          alert("pressed a button");
-        };
-    </script>-->
-
-    <!--<script src="./assets/javascript/game.js"></script>-->
-    
+  
 </body>
 </html>
