@@ -30,17 +30,17 @@ var winner;
         //hide lose message if applicable
         document.getElementById("loseMessage").style.display = "none";
 
+        //clear computer guess after loss
+        document.querySelector("#computerGuess").innerHTML = "Computer Guess: ";
+
         //Randomly selects a choice from the options array and stores value. This is the Computer's guess.
         //comparing to nmber of guesses remaining ensures computer only selects one choice per game
         if (guessesRemaining === 10)  {
-            computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length - 1)];
+            computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
         };
 
-        console.log(computerGuess);
         // Determines which key player pressed and stores value 
         playerGuess = event.key;
-        console.log(playerGuess);
-        console.log(guessesRemaining);
 
         // search guess history array to determine if user has already guessed this letter
         // prevent user from selecting non alpha characters
@@ -56,8 +56,6 @@ var winner;
         }   else  {
             alert("invalid choice, please choose again");
         }
-
-        console.log(guessesRemaining);
 
         //compare player guess with computer guess and update the appropriate fields based upon results
         if (playerGuess !== computerGuess && guessesRemaining === 0)    {
@@ -89,8 +87,11 @@ var winner;
         }
 
         function youLose() {
-            //inform player they won the game
+            //inform player they lost the game
             document.getElementById("loseMessage").style.display = "block";
+
+            //display computer guess
+            document.querySelector("#computerGuess").innerHTML = "Computer Guess: " + computerGuess;
             
             //update number of losses
             losses++;
